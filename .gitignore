@@ -1,3 +1,5 @@
 pids
 log
 config.yml
+.bundle
+vendor

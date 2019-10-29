@@ -1,0 +1,5 @@
+bind_host: 127.0.0.1
+spampd_host: 127.0.0.1
+spampd_port: 783
+clamav_host: 127.0.0.1
+clamav_port: 3310

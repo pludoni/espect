@@ -1,6 +1,5 @@
 module Espect
   class SPAMCheck
-
     attr_reader :code, :score, :description
 
     def initialize(code, score, description = nil)
@@ -11,11 +10,10 @@ module Espect
 
     def to_hash
       {
-        :code => code,
-        :score => score,
-        :description => description
+        code: code,
+        score: score,
+        description: description
       }
     end
-
   end
 end
