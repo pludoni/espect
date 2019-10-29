@@ -1,16 +1,12 @@
 require 'yaml'
-config_path = File.expand_path('../config.yml', __FILE__)
-if File.exist?(config_path)
-  config = YAML.load_file(config_path)
-else
-  config = {}
-end
+
+require_relative './lib/espect'
 
 threads 5,5
-if config['ssl_port']
-  ssl_bind '0.0.0.0', config['ssl_port'] || 8899, {key: config['ssl_key'], cert: config['ssl_cert'], verify_mode: 'none'}
+if Espect.config['ssl_port']
+  ssl_bind Espect.config['bind_host'], Espect.config['ssl_port'] || 8899, {key: Espect.config['ssl_key'], cert: Espect.config['ssl_cert'], verify_mode: 'none'}
 end
-bind "tcp://0.0.0.0:#{config['port'] || 8898}"
+bind "tcp://#{Espect.config['bind_host'] || '0.0.0.0'}:#{Espect.config['port'] || 8898}"
 
 prune_bundler
 quiet false

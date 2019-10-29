@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    json (2.0.2)
     puma (3.6.0)
     rack (2.0.1)
 
@@ -9,9 +8,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  json
   puma
   rack
 
 BUNDLED WITH
-   1.14.5
+   1.17.3

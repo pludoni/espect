@@ -46,7 +46,7 @@ module Espect
       @spam_scan ||= begin
         data = nil
         Timeout.timeout(15) do
-          tcp_socket = TCPSocket.new(Espect.config['spamd_host'] || '127.0.0.1', 783)
+	  tcp_socket = TCPSocket.new(Espect.config['spamd_host'] || '127.0.0.1', Espect.config['spampd_port'])
           tcp_socket.write("REPORT SPAMC/1.2\r\n")
           tcp_socket.write("Content-length: #{@message.bytesize}\r\n")
           tcp_socket.write("\r\n")
@@ -83,7 +83,7 @@ module Espect
       @virus_result ||= begin
         data = nil
         Timeout.timeout(10) do
-          tcp_socket = TCPSocket.new(Espect.config['clamav_host'] || '127.0.0.1', 2000)
+	  tcp_socket = TCPSocket.new(Espect.config['clamav_host'] || '127.0.0.1', Espect.config['clamav_port'])
           tcp_socket.write("zINSTREAM\0")
           tcp_socket.write([@message.bytesize].pack("N"))
           tcp_socket.write(@message)

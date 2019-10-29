@@ -9,7 +9,12 @@ module Espect
       request = Rack::Request.new(env)
       case request.path
       when /\A\/inspect/
+	      puts "BODY:::"
+	      
+
         decoded_body = Base64.decode64(request.body.read)
+	puts "decoded"
+	puts decoded_body
         message = Message.new(decoded_body)
         [200, {}, [message.to_json]]
       when /\A\/report\/([a-z]+)\z/
